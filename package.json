@@ -13,5 +13,9 @@
     "ethers": "^6.13.5",
     "jquery": "^3.7.1",
     "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.10.15",
+    "swc-loader": "^0.2.6"
   }
 }

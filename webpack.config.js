@@ -1,4 +1,4 @@
-module.exports = {
+const webpackBaseConfig = {
   entry: {
     main: resolve('src/index.tsx')
   },
@@ -8,7 +8,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'swc-loader'
@@ -17,3 +17,4 @@ module.exports = {
     ]
   }
 }
+module.exports = merge.default(webpackBaseConfig, _mergeConfig)

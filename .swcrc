@@ -1,0 +1,27 @@
+{
+  "module": {
+    "type": "es6",  // 指定模块类型为 ES6 模块。此设置会启用 ES6 的 `import` 和 `export` 语法。
+    "ignoreDynamic": true  // 忽略动态导入（即 `import()`），通常用于实现代码分割或延迟加载。
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",  // 设置语法解析器为 TypeScript，允许解析 TypeScript 文件。
+      "dynamicImport": true,  // 启用动态导入，允许在运行时按需加载模块。
+      "decorators": true,  // 启用装饰器，支持 JavaScript/TypeScript 中的装饰器语法。
+      "tsx": true  // 启用 TSX 语法，允许解析 React 组件的 TypeScript + JSX 语法。
+    },
+    "transform": {
+      "legacyDecorator": true,  // 支持 legacy（传统）装饰器语法，用于兼容旧版本的装饰器规范。
+      "decoratorMetadata": true,  // 启用装饰器元数据生成，通常与 TypeScript 和装饰器一起使用。
+      "react": {
+        "runtime": "automatic",  // 设置 React JSX 转换方式为自动（适用于 React 17 及以上版本）。不需要显式引入 `React`。
+        "throwIfNamespace": true,  // 如果在 JSX 中使用了命名空间，抛出错误。帮助避免 JSX 中不正确的命名空间引用。
+        "useBuiltins": true  // 使用内建的 React 功能（如 `React.createElement`）来优化性能和构建体积。
+      }
+    },
+    "target": "es2015",  // 设置输出目标的 ECMAScript 版本为 ES2015（即 ES6）。生成的代码将兼容 ES6 及以上版本。
+    "loose": true,  // 启用宽松模式，可能会生成一些不完全符合 ECMAScript 规范的代码，来优化性能。
+    "externalHelpers": true,  // 启用外部帮助函数，允许将常用的 Babel 辅助函数提取到单独的文件中，从而减少输出文件大小。
+    "keepClassNames": false  // 在构建过程中不保留类名（class 名称），通常用于生产环境中以减少代码体积。
+  }
+}
