@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    // 指定 ECMAScript 目标版本为 ES5
+    "target": "ES5",
+    
+    // 指定 TypeScript 编译时包含的库，多个库可以一起使用
+    // "dom" - 用于浏览器相关的 API
+    // "ESNext" - 最新的 ECMAScript 特性
+    // "DOM.Iterable" - 包括迭代器相关的 DOM API
+    "lib": ["dom", "ESNext", "DOM.Iterable"],
+
+    // 允许 JavaScript 文件与 TypeScript 文件一起编译
+    "allowJs": true,
+
+    // 跳过库文件的类型检查，通常用于加速编译，避免过度检查第三方库
+    "skipLibCheck": true,
+
+    // 允许使用 ECMAScript 模块的默认导入和命名导入
+    "esModuleInterop": true,
+
+    // 启用严格类型检查模式
+    "strict": true,
+
+    // 强制文件名大小写一致，防止不同操作系统中对文件名大小写的处理差异
+    "forceConsistentCasingInFileNames": true,
+
+    // 设置模块解析为 ESNext，意味着使用 ECMAScript 模块的最新特性
+    "module": "ESNext",
+
+    // 设置模块解析策略为 Node.js 风格
+    // 这会影响 TypeScript 如何查找模块，模拟 Node.js 的模块解析行为
+    "moduleResolution": "node",
+
+    // 允许在 TypeScript 中导入 JSON 文件
+    "resolveJsonModule": true,
+
+    // 启用每个文件作为单独模块的模式，以便支持某些流行的构建工具（如 Webpack）
+    "isolatedModules": true,
+
+    // 不生成输出文件，通常在只做类型检查时使用
+    "noEmit": true,
+
+    // 指定 JSX 语法的编译方式，"react-jsx" 是 React 17+ 新增的 JSX 转换方式
+    "jsx": "react-jsx",
+
+    // 指定项目的根目录，这里设置为空意味着 TypeScript 会默认使用当前目录
+    "rootDir": "",
+
+    // 设置基础路径，用于模块解析
+    "baseUrl": "",
+
+    // 设置路径别名，帮助更简洁的引用项目中的模块
+    "paths": {
+      "@/*": ["src/*"],          // "@/*" 匹配 src 目录中的所有文件
+      "@pages/*": ["src/pages/*"], // "@pages/*" 匹配 src/pages 目录中的所有文件
+      "@hooks/*": ["src/hooks/*"], // "@hooks/*" 匹配 src/hooks 目录中的所有文件
+      "@utils/*": ["src/utils/*"], // "@utils/*" 匹配 src/utils 目录中的所有文件
+    }
+  },
+
+  // 指定需要包含在编译中的文件和目录
+  "include": ["src", "tests"]
+}
