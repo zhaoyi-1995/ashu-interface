@@ -10,6 +10,7 @@
   },
   "config": {
     "scripty": {
+      "path": "./scripts",
       "windowsPath": "./scripts-win"
     }
   },
@@ -20,10 +21,14 @@
     "ethers": "^6.13.5",
     "jquery": "^3.7.1",
     "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5",
     "scripty": "^2.1.1"
   },
   "devDependencies": {
     "@swc/core": "^1.10.15",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "swc-loader": "^0.2.6",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
