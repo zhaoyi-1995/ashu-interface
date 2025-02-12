@@ -20,6 +20,10 @@ const webpackBaseConfig = {
         use: {
           loader: 'swc-loader'
         }
+      },
+      {
+        test: /\.(png|svg|jpg)$/,
+        type: 'asset'
       }
     ]
   }
