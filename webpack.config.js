@@ -14,10 +14,10 @@ const webpackBaseConfig = {
   },
   resolve: {
     alias: {
-      "@/*": ["src/*"],          // "@/*" 匹配 src 目录中的所有文件
-      "@pages/*": ["src/pages/*"], // "@pages/*" 匹配 src/pages 目录中的所有文件
-      "@hooks/*": ["src/hooks/*"], // "@hooks/*" 匹配 src/hooks 目录中的所有文件
-      "@utils/*": ["src/utils/*"], // "@utils/*" 匹配 src/utils 目录中的所有文件
+      "@": resolve(__dirname, 'src'),          // "@/*" 匹配 src 目录中的所有文件
+      "@pages": resolve(__dirname, 'src/pages'), // "@pages/*" 匹配 src/pages 目录中的所有文件
+      "@hooks": resolve(__dirname, 'src/hooks'), // "@hooks/*" 匹配 src/hooks 目录中的所有文件
+      "@utils": resolve(__dirname, 'src/utils'), // "@utils/*" 匹配 src/utils 目录中的所有文件
     },
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
   },

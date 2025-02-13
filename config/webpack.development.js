@@ -23,9 +23,11 @@ module.exports = {
     // 启用 history API 的回退，支持前端路由
     historyApiFallback: true,
     // 配置代理，将 /api 请求转发到本地的 3000 端口
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
+    proxy: [
+      {
+        '/api': 'http://localhost:3000',
+      }
+    ],
     // 配置静态资源目录，指向打包输出的目录
     static: {
       directory: join(__dirname, '../dist')
@@ -39,11 +41,11 @@ module.exports = {
   // 配置输出选项
   output: {
     // 设置公共路径，用于加载应用中的资源
-    publickPath: '/',
+    publicPath: '/',
     // 配置 JavaScript 输出文件的命名规则
     filename: 'scripts/[name].bundle.js',
     // 配置静态资源（如图片等）的输出文件命名规则
-    assetsModuleFilename: 'images/[name].[ext]'
+    assetModuleFilename: 'images/[name].[ext]',
   },
 
   // 配置 Webpack 打包输出的日志级别，这里仅显示错误
@@ -62,7 +64,7 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin({
       // 配置构建成功时的提示信息
       compilationSuccessInfo: {
-        messages: ['Your application is running here http://locahost:3000'], // 显示应用运行地址
+        messages: ['Your application is running here http://localhost:3000'], // 显示应用运行地址
         notes: ['构建信息,及时关注右上角'] // 附加的提示信息
       },
       // 配置错误通知逻辑
