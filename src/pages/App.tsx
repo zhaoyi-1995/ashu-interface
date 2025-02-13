@@ -1,6 +1,8 @@
+import MetaMaskCard from "@/components/connectCards/MetaMaskCard"
+
 function App() {
   return <>
-    <div>阿树</div>
+    <MetaMaskCard />
   </>
 }
 
