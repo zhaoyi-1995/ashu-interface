@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --mode  development",
     "client:dev": "scripty",
     "client:prod": "scripty",
     "client:server": "scripty"
@@ -32,6 +33,7 @@
     "scripty": "^2.1.1"
   },
   "devDependencies": {
+    "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@swc/core": "^1.10.15",
     "@swc/helpers": "^0.5.15",
     "@types/react": "^19.0.8",
