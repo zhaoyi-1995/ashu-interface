@@ -2,12 +2,18 @@ const { resolve } = require('path');
 const merge = require('webpack-merge')
 
 const argv = require('yargs-parser')(process.argv.slice(2))
-const _mode = argv.mode || 'development'
-const _mergeConfig = require(`./config/webpack.${_mode}.js`)
-const _modeflag = _mode === 'production' ? true : false;
 
 const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+// const WebpackBar = require('webpackbar');
+const { ThemedProgressPlugin } = require('themed-progress-plugin');
+
+const _mode = argv.mode || 'development'
+const _mergeConfig = require(`./config/webpack.${_mode}.js`)
+const _modeflag = _mode === 'production' ? true : false;
 
 const webpackBaseConfig = {
   entry: {
@@ -61,6 +67,7 @@ const webpackBaseConfig = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new Dotenv(),
     new MiniCssExtractPlugin({
       filename: _modeflag
@@ -71,6 +78,7 @@ const webpackBaseConfig = {
         : 'styles/[name].css',
       ignoreOrder: false,
     }),
+    new ThemedProgressPlugin(),
   ]
 }
 module.exports = merge.default(webpackBaseConfig, _mergeConfig)
