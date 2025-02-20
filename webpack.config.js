@@ -16,9 +16,16 @@ const webpackBaseConfig = {
   resolve: {
     alias: {
       "@": resolve(__dirname, 'src'),          // "@/*" 匹配 src 目录中的所有文件
+      "@components": resolve(__dirname, 'src/components'),
       "@pages": resolve(__dirname, 'src/pages'), // "@pages/*" 匹配 src/pages 目录中的所有文件
       "@hooks": resolve(__dirname, 'src/hooks'), // "@hooks/*" 匹配 src/hooks 目录中的所有文件
       "@utils": resolve(__dirname, 'src/utils'), // "@utils/*" 匹配 src/utils 目录中的所有文件
+      "@layouts": resolve(__dirname, 'src/layouts'),
+      "@assets": resolve(__dirname, 'src/assets'),
+      "@states": resolve(__dirname, 'src/states'),
+      "@service": resolve(__dirname, 'src/service'),
+      "@lib": resolve(__dirname, 'src/lib'),
+      "@constants": resolve(__dirname, 'src/constants'),
     },
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
   },

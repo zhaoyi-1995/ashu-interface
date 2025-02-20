@@ -1,9 +1,11 @@
-import MetaMaskCard from "@/components/connectCards/MetaMaskCard"
-
+import { useRoutes } from "react-router-dom";
+import routes from "@/routes";
 function App() {
+  const routing = useRoutes(routes)
+  console.log(routing)
   return <>
-    <MetaMaskCard />
-  </>
+    { routing }
+    </>
 }
 
 export default App
