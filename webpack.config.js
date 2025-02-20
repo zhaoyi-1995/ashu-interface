@@ -6,6 +6,8 @@ const _mode = argv.mode || 'development'
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
 const Dotenv = require('dotenv-webpack')
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const webpackBaseConfig = {
   entry: {
     main: resolve('src/index.tsx')
@@ -41,6 +43,19 @@ const webpackBaseConfig = {
       {
         test: /\.(png|svg|jpg)$/,
         type: 'asset'
+      },
+      {
+        test: /\.css$/i,
+        include: [
+          resolve(__dirname, 'src'),
+          resolve(__dirname, 'node_modules')
+        ],
+        use: [
+          // MiniCssExtractPlugin.loader,
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
       }
     ]
   },
