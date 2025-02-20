@@ -48,7 +48,7 @@ const webpackBaseConfig = {
         }
       },
       {
-        test: /\.(png|svg|jpg)$/,
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         type: 'asset'
       },
       {
