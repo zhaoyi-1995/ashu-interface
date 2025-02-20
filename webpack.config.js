@@ -4,8 +4,9 @@ const merge = require('webpack-merge')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const _mode = argv.mode || 'development'
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
-const Dotenv = require('dotenv-webpack')
+const _modeflag = _mode === 'production' ? true : false;
 
+const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const webpackBaseConfig = {
@@ -51,14 +52,25 @@ const webpackBaseConfig = {
           resolve(__dirname, 'node_modules')
         ],
         use: [
-          // MiniCssExtractPlugin.loader,
-          'style-loader',
+          MiniCssExtractPlugin.loader,
+          // 'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader'
         ]
       }
     ]
   },
-  plugins: [new Dotenv()]
+  plugins: [
+    new Dotenv(),
+    new MiniCssExtractPlugin({
+      filename: _modeflag
+        ? 'styles/[name].[contenthash:5].css'
+        : 'styles/[name].css',
+      chunkFilename: _modeflag
+        ? 'styles/[name].[contenthash:5].css'
+        : 'styles/[name].css',
+      ignoreOrder: false,
+    }),
+  ]
 }
 module.exports = merge.default(webpackBaseConfig, _mergeConfig)
