@@ -1,6 +1,8 @@
+import MetaMaskCard from "@/components/connectCards/MetaMaskCard"
+
 const  DApp = () => {
   return <>
-    Dapp
+    <MetaMaskCard />
   </>
 }
 

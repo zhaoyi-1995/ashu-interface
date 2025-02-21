@@ -6,18 +6,6 @@ const ETH: AddEthereumChainParameter['nativeCurrency'] = {
   decimals: 18,
 }
 
-const MATIC: AddEthereumChainParameter['nativeCurrency'] = {
-  name: 'Matic',
-  symbol: 'MATIC',
-  decimals: 18,
-}
-
-const CELO: AddEthereumChainParameter['nativeCurrency'] = {
-  name: 'Celo',
-  symbol: 'CELO',
-  decimals: 18,
-}
-
 interface BasicChainInformation {
   urls: string[]
   name: string
@@ -56,6 +44,7 @@ const getAlchemyUrlFor = (network: string) =>
 
 type ChainConfig = { [chainId: number]: BasicChainInformation | ExtendedChainInformation }
 
+// 主网，多个RPC连接 依次降级，兼容网络不稳定
 export const MAINNET_CHAINS: ChainConfig = {
   1: {
     urls: [
@@ -82,23 +71,8 @@ export const MAINNET_CHAINS: ChainConfig = {
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://arbiscan.io'],
   },
-  137: {
-    urls: [
-      ...(getInfuraUrlFor('polygon-mainnet') ? [getInfuraUrlFor('polygon-mainnet') as string] : []),
-      'https://polygon-rpc.com'
-    ].filter(Boolean),
-    name: 'Polygon Mainnet',
-    nativeCurrency: MATIC,
-    blockExplorerUrls: ['https://polygonscan.com'],
-  },
-  42220: {
-    urls: ['https://forno.celo.org'],
-    name: 'Celo',
-    nativeCurrency: CELO,
-    blockExplorerUrls: ['https://explorer.celo.org'],
-  },
 }
-
+// 测试网
 export const TESTNET_CHAINS: ChainConfig = {
   5: {
     urls: [...(getInfuraUrlFor('goerli') ? [getInfuraUrlFor('goerli') as string] : [])].filter(Boolean),
@@ -121,20 +95,6 @@ export const TESTNET_CHAINS: ChainConfig = {
     name: 'Arbitrum Goerli',
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://testnet.arbiscan.io'],
-  },
-  80001: {
-    urls: [
-      ...(getInfuraUrlFor('polygon-mumbai') ? [getInfuraUrlFor('polygon-mumbai') as string] : [])
-    ].filter(Boolean),
-    name: 'Polygon Mumbai',
-    nativeCurrency: MATIC,
-    blockExplorerUrls: ['https://mumbai.polygonscan.com'],
-  },
-  44787: {
-    urls: ['https://alfajores-forno.celo-testnet.org'],
-    name: 'Celo Alfajores',
-    nativeCurrency: CELO,
-    blockExplorerUrls: ['https://alfajores-blockscout.celo-testnet.org'],
   },
   1337: {
     urls: ['http://127.0.0.1:7545'],
