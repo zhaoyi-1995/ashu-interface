@@ -1,5 +1,6 @@
 import PageNotFoundView from '@/components/common/PageNotFoundView';
 import MainLayout from '@/layouts/MainLayout';
+import DApp from '@/pages/DApp';
 import Home from '@pages/Home';
 import { RouteObject } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const mainRoutes: RouteObject = {
   children: [
     { path: '*', element: <PageNotFoundView /> },
     { path: '/', element: <Home /> },
+    { path: '/dapp', element: <DApp /> },
     { path: '404', element: <PageNotFoundView /> },
   ]
 }

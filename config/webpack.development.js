@@ -32,7 +32,7 @@ module.exports = {
 
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['Your application is running here http://localhost:3000'], // 显示应用运行地址
+        messages: ['Your application is running here http://localhost:3003'], // 显示应用运行地址
         notes: ['构建信息,及时关注右上角'] // 附加的提示信息
       },
       onErrors: function (severity, errors) {
