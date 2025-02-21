@@ -3,7 +3,7 @@ import { Contract, ethers } from 'ethers';
 import { hooks } from '@/connector/metaMask';
 import InfoContractABI from '@/abis/AShuInfo.json';
 import { BigNumber } from '@ethersproject/bignumber';
-import { AShuInfo } from '@/types/ethers-contracts/AShuInfo';
+import { AShuInfo, AShuInfo__factory } from '@/types/ethers-contracts';
 
 // 合约地址
 const CONTRACT_ADDRESS = InfoContractABI.networks['5777'].address;
@@ -28,14 +28,17 @@ const InfoContractInterface = () => {
   useEffect(() => {
     if (provider && account) {
       const signer = provider.getSigner();
-      // 直接省去了as 操作
-      const contractInstance = new Contract(
+      // const contractInstance = new Contract(
+      //   CONTRACT_ADDRESS,
+      //   InfoContractABI.abi,
+      //   signer
+      // );
+      // 直接使用工厂模式， 就不用再 asle 
+      const contractInstance = AShuInfo__factory.connect(
         CONTRACT_ADDRESS,
-        InfoContractABI.abi,
         signer
-      );
-      
-      setContract(contractInstance as AShuInfo);
+      )
+      setContract(contractInstance);
 
       contractInstance.on('Instructor', (name: string, age: BigNumber) => {
         console.log('Instructor event:', name, age.toString());
