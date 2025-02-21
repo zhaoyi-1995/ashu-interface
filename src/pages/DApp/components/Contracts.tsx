@@ -3,6 +3,7 @@ import { Contract, ethers } from 'ethers';
 import { hooks } from '@/connector/metaMask';
 import InfoContractABI from '@/abis/AShuInfo.json';
 import { BigNumber } from '@ethersproject/bignumber';
+import { AShuInfo } from '@/types/ethers-contracts/AShuInfo';
 
 // 合约地址
 const CONTRACT_ADDRESS = InfoContractABI.networks['5777'].address;
@@ -15,7 +16,9 @@ const InfoContractInterface = () => {
   const provider = useProvider(); // 获取总操作控制器
 
   // 页面操作相关
-  const [contract, setContract] = useState<ethers.Contract | null>(null); // 定义一个合约
+  // const [contract, setContract] = useState<ethers.Contract | null>(null); // 定义一个合约
+  const [contract, setContract] = useState<AShuInfo | null>(null); // 定义一个合约
+
   const [inputName, setInputName] = useState(''); // 姓名输入框
   const [inputAge, setInputAge] = useState(''); // 年龄输入框
   const [contractInfo, setContractInfo] = useState({ name: '', age: '' }); // 合约初始化信息
@@ -32,7 +35,7 @@ const InfoContractInterface = () => {
         signer
       );
       
-      setContract(contractInstance);
+      setContract(contractInstance as AShuInfo);
 
       contractInstance.on('Instructor', (name: string, age: BigNumber) => {
         console.log('Instructor event:', name, age.toString());
