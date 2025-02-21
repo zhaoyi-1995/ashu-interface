@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Contract, ethers } from 'ethers';
 import { hooks } from '@/connector/metaMask';
 import InfoContractABI from '@/abis/AShuInfo.json';
 import { BigNumber } from '@ethersproject/bignumber';

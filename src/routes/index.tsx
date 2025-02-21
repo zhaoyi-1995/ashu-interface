@@ -1,5 +1,6 @@
 import PageNotFoundView from '@/components/common/PageNotFoundView';
 import MainLayout from '@/layouts/MainLayout';
+import BankApp from '@/pages/BankApp';
 import DApp from '@/pages/DApp';
 import Home from '@pages/Home';
 import { RouteObject } from 'react-router-dom';
@@ -13,6 +14,7 @@ const mainRoutes: RouteObject = {
     { path: '*', element: <PageNotFoundView /> },
     { path: '/', element: <Home /> },
     { path: '/dapp', element: <DApp /> },
+    { path: '/bank', element: <BankApp /> },
     { path: '404', element: <PageNotFoundView /> },
   ]
 }

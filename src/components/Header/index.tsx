@@ -19,6 +19,7 @@ const Header = () => {
       <div className="flex space-x-6">
         <Link to="/" className="hover:text-gray-400">Home</Link>
         <Link to="/dapp" className="hover:text-gray-400">DApp</Link>
+        <Link to="/bank" className="hover:text-gray-400">Bank</Link>
       </div>
 
       {/* 右侧连接钱包按钮 */}

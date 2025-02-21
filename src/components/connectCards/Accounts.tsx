@@ -1,6 +1,5 @@
 import type { BigNumber } from '@ethersproject/bignumber'
 import type { Web3ReactHooks } from '@web3-react/core'
-import { formatEther } from 'ethers'
 import { useEffect, useState } from 'react'
 
 function useBalances(
@@ -50,7 +49,7 @@ export function Accounts({
           : accounts?.map((account, i) => (
               <ul key={account} style={{ margin: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {ENSNames?.[i] ?? account}
-                {balances?.[i] ? ` (Ξ${formatEther(balances[i].toString())})` : null}
+                {balances?.[i] ? ` (Ξ${balances[i].toString()})` : null}
               </ul>
             ))}
       </b>
