@@ -1,7 +1,13 @@
-const BankApp = () => {
+import MetaMaskCard from "@/components/connectCards/MetaMaskCard"
+import BankContractInterface from "./components/BankContracts"
+
+const  DApp = () => {
   return <>
-    bankapp
+    <MetaMaskCard />
+    <hr />
+    <BankContractInterface />
   </>
 }
 
-export default BankApp
+
+export default DApp

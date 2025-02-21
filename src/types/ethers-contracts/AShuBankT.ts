@@ -27,14 +27,14 @@ import type {
   OnEvent,
 } from "./common";
 
-export interface AShuBankInterface extends utils.Interface {
+export interface AShuBankTInterface extends utils.Interface {
   functions: {
     "ANNUAL_INTEREST_RATE()": FunctionFragment;
     "MAX_WITHDRAWAL_PERCENTAGE()": FunctionFragment;
     "SECONDS_PER_YEAR()": FunctionFragment;
     "deposit()": FunctionFragment;
     "caculateInterest(address)": FunctionFragment;
-    "withdrawn(uint256)": FunctionFragment;
+    "withdraw(uint256)": FunctionFragment;
     "getUserBalance(address)": FunctionFragment;
     "getBalance()": FunctionFragment;
   };
@@ -46,7 +46,7 @@ export interface AShuBankInterface extends utils.Interface {
       | "SECONDS_PER_YEAR"
       | "deposit"
       | "caculateInterest"
-      | "withdrawn"
+      | "withdraw"
       | "getUserBalance"
       | "getBalance"
   ): FunctionFragment;
@@ -69,7 +69,7 @@ export interface AShuBankInterface extends utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "withdrawn",
+    functionFragment: "withdraw",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
@@ -98,7 +98,7 @@ export interface AShuBankInterface extends utils.Interface {
     functionFragment: "caculateInterest",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "withdrawn", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "getUserBalance",
     data: BytesLike
@@ -108,12 +108,12 @@ export interface AShuBankInterface extends utils.Interface {
   events: {
     "Deposit(address,uint256)": EventFragment;
     "InterestCaculated(address,uint256)": EventFragment;
-    "Withdrawn(address,uint256)": EventFragment;
+    "Withdraw(address,uint256)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "Deposit"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "InterestCaculated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Withdrawn"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Withdraw"): EventFragment;
 }
 
 export interface DepositEventObject {
@@ -136,23 +136,23 @@ export type InterestCaculatedEvent = TypedEvent<
 export type InterestCaculatedEventFilter =
   TypedEventFilter<InterestCaculatedEvent>;
 
-export interface WithdrawnEventObject {
+export interface WithdrawEventObject {
   user: string;
   amount: BigNumber;
 }
-export type WithdrawnEvent = TypedEvent<
+export type WithdrawEvent = TypedEvent<
   [string, BigNumber],
-  WithdrawnEventObject
+  WithdrawEventObject
 >;
 
-export type WithdrawnEventFilter = TypedEventFilter<WithdrawnEvent>;
+export type WithdrawEventFilter = TypedEventFilter<WithdrawEvent>;
 
-export interface AShuBank extends BaseContract {
+export interface AShuBankT extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: AShuBankInterface;
+  interface: AShuBankTInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -197,7 +197,7 @@ export interface AShuBank extends BaseContract {
      * 取款
      * @param amount 要提取的金额
      */
-    withdrawn(
+    withdraw(
       amount: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
@@ -237,7 +237,7 @@ export interface AShuBank extends BaseContract {
    * 取款
    * @param amount 要提取的金额
    */
-  withdrawn(
+  withdraw(
     amount: BigNumberish,
     overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
@@ -275,7 +275,7 @@ export interface AShuBank extends BaseContract {
      * 取款
      * @param amount 要提取的金额
      */
-    withdrawn(amount: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    withdraw(amount: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
     /**
      * 查询用户的余额
@@ -305,11 +305,11 @@ export interface AShuBank extends BaseContract {
       interest?: null
     ): InterestCaculatedEventFilter;
 
-    "Withdrawn(address,uint256)"(
+    "Withdraw(address,uint256)"(
       user?: string | null,
       amount?: null
-    ): WithdrawnEventFilter;
-    Withdrawn(user?: string | null, amount?: null): WithdrawnEventFilter;
+    ): WithdrawEventFilter;
+    Withdraw(user?: string | null, amount?: null): WithdrawEventFilter;
   };
 
   estimateGas: {
@@ -336,7 +336,7 @@ export interface AShuBank extends BaseContract {
      * 取款
      * @param amount 要提取的金额
      */
-    withdrawn(
+    withdraw(
       amount: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
@@ -381,7 +381,7 @@ export interface AShuBank extends BaseContract {
      * 取款
      * @param amount 要提取的金额
      */
-    withdrawn(
+    withdraw(
       amount: BigNumberish,
       overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
