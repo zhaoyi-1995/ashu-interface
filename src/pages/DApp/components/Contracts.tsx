@@ -4,10 +4,8 @@ import { hooks } from '@/connector/metaMask';
 import InfoContractABI from '@/abis/AShuInfo.json';
 import { BigNumber } from '@ethersproject/bignumber';
 import { AShuInfo, AShuInfo__factory } from '@/types/ethers-contracts';
-
 // 合约地址
 const CONTRACT_ADDRESS = InfoContractABI.networks['5777'].address;
-
 const InfoContractInterface = () => {
   // 和钱包实例相关
   const { useProvider, useAccounts } = hooks;
