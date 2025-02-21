@@ -7,7 +7,8 @@
     "dev": "webpack --mode  development",
     "client:dev": "scripty",
     "client:prod": "scripty",
-    "client:server": "scripty"
+    "client:server": "scripty",
+    "build": "webpack --mode production"
   },
   "config": {
     "scripty": {
