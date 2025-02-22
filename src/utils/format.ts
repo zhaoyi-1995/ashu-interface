@@ -1,4 +1,4 @@
-function formatContractAddress(address: string): string | null {
+export const formatContractAddress = (address: string): string | null => {
   // 去除地址两边的空格
   address = address.trim();
 

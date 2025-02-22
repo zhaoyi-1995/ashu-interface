@@ -9,7 +9,12 @@
     "client:prod": "scripty",
     "client:server": "scripty",
     "build": "webpack --mode production",
-    "test:uidiff": "backstop test"
+    "test:uidiff": "backstop test",
+    "test:unit": "jest --collectCoverage --reporters default jest-stare"
+  },
+  "jest-stare": {
+    "coverageLink": "../jest-coverage/lcov-report/index.html",
+    "resultDir": "docs/jest-stare"
   },
   "config": {
     "scripty": {
@@ -22,6 +27,7 @@
   "license": "ISC",
   "dependencies": {
     "@ethersproject/bignumber": "^5.7.0",
+    "@swc/jest": "^0.2.37",
     "@web3-react/core": "^8.2.3",
     "@web3-react/metamask": "^8.2.4",
     "@web3-react/types": "^8.2.3",
@@ -39,6 +45,7 @@
     "@swc/core": "^1.10.15",
     "@swc/helpers": "^0.5.15",
     "@tailwindcss/postcss": "^4.0.7",
+    "@types/jest": "^29.5.14",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
@@ -48,6 +55,8 @@
     "css-minimizer-webpack-plugin": "^7.0.0",
     "dotenv-webpack": "^8.1.0",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^29.7.0",
+    "jest-stare": "^2.5.2",
     "mini-css-extract-plugin": "^2.9.2",
     "node-notifier": "^10.0.1",
     "postcss": "^8.5.3",

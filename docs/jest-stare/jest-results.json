@@ -1,0 +1,90 @@
+{
+  "numFailedTestSuites": 2,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 0,
+  "numPassedTests": 0,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 2,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 2,
+  "numTotalTests": 0,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1740240382448,
+  "success": false,
+  "testResults": [
+    {
+      "failureMessage": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    Failed to deserialize buffer as swc::config::Options\n    JSON: {\"$schema\":\"https://json.schemastore.org/swcrc\",\"module\":{\"type\":\"commonjs\",\"ignoreDynamic\":true,\"strict\":true,\"strictMode\":true,\"laze\":true,\"noInterop\":true},\"jsc\":{\"parser\":{\"syntax\":\"typescript\",\"dynamicImport\":true,\"decorators\":true,\"tsx\":true},\"transform\":{\"legacyDecorator\":true,\"decoratorMetadata\":true,\"react\":{\"runtime\":\"automatic\",\"refresh\":true,\"development\":false,\"pragma\":\"React.createElement\",\"pragmaFrag\":\"React.Fragment\"},\"hidden\":{\"jest\":true}},\"target\":\"es2022\",\"loose\":true,\"externalHelpers\":true,\"keepClassNames\":true},\"minify\":true,\"sourceMaps\":true,\"exclude\":[\"node_modules\",\".git\",\"dist\"],\"filename\":\"/Users/zhaoyi/Desktop/project/ashu-interface/tests/setupTests.ts\"}\n\n    Caused by:\n        unknown field `laze`, expected one of `allowTopLevelThis`, `strict`, `strictMode`, `lazy`, `importInterop`, `exportInteropAnnotation`, `noInterop`, `ignoreDynamic`, `preserveImportMeta`, `resolveFully`, `outFileExtension` at line 1 column 690\n\n      \u001b[2mat Compiler.transformSync (\u001b[22mnode_modules/.pnpm/@swc+core@1.10.18_@swc+helpers@0.5.15/node_modules/@swc/core/index.js\u001b[2m:249:29)\u001b[22m\n      \u001b[2mat transformSync (\u001b[22mnode_modules/.pnpm/@swc+core@1.10.18_@swc+helpers@0.5.15/node_modules/@swc/core/index.js\u001b[2m:359:21)\u001b[22m\n      \u001b[2mat Object.process (\u001b[22mnode_modules/.pnpm/@swc+jest@0.2.37_@swc+core@1.10.18_@swc+helpers@0.5.15_/node_modules/@swc/jest/index.js\u001b[2m:73:45)\u001b[22m\n      \u001b[2mat ScriptTransformer.transformSource (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:545:31)\u001b[22m\n      \u001b[2mat ScriptTransformer._transformAndBuildScript (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:674:40)\u001b[22m\n      \u001b[2mat ScriptTransformer.transform (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:726:19)\u001b[22m\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 0,
+        "runtime": 0,
+        "slow": false,
+        "start": 0
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testExecError": "Failed to deserialize buffer as swc::config::Options\nJSON: {\"$schema\":\"https://json.schemastore.org/swcrc\",\"module\":{\"type\":\"commonjs\",\"ignoreDynamic\":true,\"strict\":true,\"strictMode\":true,\"laze\":true,\"noInterop\":true},\"jsc\":{\"parser\":{\"syntax\":\"typescript\",\"dynamicImport\":true,\"decorators\":true,\"tsx\":true},\"transform\":{\"legacyDecorator\":true,\"decoratorMetadata\":true,\"react\":{\"runtime\":\"automatic\",\"refresh\":true,\"development\":false,\"pragma\":\"React.createElement\",\"pragmaFrag\":\"React.Fragment\"},\"hidden\":{\"jest\":true}},\"target\":\"es2022\",\"loose\":true,\"externalHelpers\":true,\"keepClassNames\":true},\"minify\":true,\"sourceMaps\":true,\"exclude\":[\"node_modules\",\".git\",\"dist\"],\"filename\":\"/Users/zhaoyi/Desktop/project/ashu-interface/tests/setupTests.ts\"}\n\nCaused by:\n    unknown field `laze`, expected one of `allowTopLevelThis`, `strict`, `strictMode`, `lazy`, `importInterop`, `exportInteropAnnotation`, `noInterop`, `ignoreDynamic`, `preserveImportMeta`, `resolveFully`, `outFileExtension` at line 1 column 690",
+      "testFilePath": "/Users/zhaoyi/Desktop/project/ashu-interface/tests/unit/address.spec.ts",
+      "testResults": []
+    },
+    {
+      "failureMessage": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    Failed to deserialize buffer as swc::config::Options\n    JSON: {\"$schema\":\"https://json.schemastore.org/swcrc\",\"module\":{\"type\":\"commonjs\",\"ignoreDynamic\":true,\"strict\":true,\"strictMode\":true,\"laze\":true,\"noInterop\":true},\"jsc\":{\"parser\":{\"syntax\":\"typescript\",\"dynamicImport\":true,\"decorators\":true,\"tsx\":true},\"transform\":{\"legacyDecorator\":true,\"decoratorMetadata\":true,\"react\":{\"runtime\":\"automatic\",\"refresh\":true,\"development\":false,\"pragma\":\"React.createElement\",\"pragmaFrag\":\"React.Fragment\"},\"hidden\":{\"jest\":true}},\"target\":\"es2022\",\"loose\":true,\"externalHelpers\":true,\"keepClassNames\":true},\"minify\":true,\"sourceMaps\":true,\"exclude\":[\"node_modules\",\".git\",\"dist\"],\"filename\":\"/Users/zhaoyi/Desktop/project/ashu-interface/tests/setupTests.ts\"}\n\n    Caused by:\n        unknown field `laze`, expected one of `allowTopLevelThis`, `strict`, `strictMode`, `lazy`, `importInterop`, `exportInteropAnnotation`, `noInterop`, `ignoreDynamic`, `preserveImportMeta`, `resolveFully`, `outFileExtension` at line 1 column 690\n\n      \u001b[2mat Compiler.transformSync (\u001b[22mnode_modules/.pnpm/@swc+core@1.10.18_@swc+helpers@0.5.15/node_modules/@swc/core/index.js\u001b[2m:249:29)\u001b[22m\n      \u001b[2mat transformSync (\u001b[22mnode_modules/.pnpm/@swc+core@1.10.18_@swc+helpers@0.5.15/node_modules/@swc/core/index.js\u001b[2m:359:21)\u001b[22m\n      \u001b[2mat Object.process (\u001b[22mnode_modules/.pnpm/@swc+jest@0.2.37_@swc+core@1.10.18_@swc+helpers@0.5.15_/node_modules/@swc/jest/index.js\u001b[2m:73:45)\u001b[22m\n      \u001b[2mat ScriptTransformer.transformSource (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:545:31)\u001b[22m\n      \u001b[2mat ScriptTransformer._transformAndBuildScript (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:674:40)\u001b[22m\n      \u001b[2mat ScriptTransformer.transform (\u001b[22mnode_modules/.pnpm/@jest+transform@29.7.0/node_modules/@jest/transform/build/ScriptTransformer.js\u001b[2m:726:19)\u001b[22m\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 0,
+        "runtime": 0,
+        "slow": false,
+        "start": 0
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testExecError": "Failed to deserialize buffer as swc::config::Options\nJSON: {\"$schema\":\"https://json.schemastore.org/swcrc\",\"module\":{\"type\":\"commonjs\",\"ignoreDynamic\":true,\"strict\":true,\"strictMode\":true,\"laze\":true,\"noInterop\":true},\"jsc\":{\"parser\":{\"syntax\":\"typescript\",\"dynamicImport\":true,\"decorators\":true,\"tsx\":true},\"transform\":{\"legacyDecorator\":true,\"decoratorMetadata\":true,\"react\":{\"runtime\":\"automatic\",\"refresh\":true,\"development\":false,\"pragma\":\"React.createElement\",\"pragmaFrag\":\"React.Fragment\"},\"hidden\":{\"jest\":true}},\"target\":\"es2022\",\"loose\":true,\"externalHelpers\":true,\"keepClassNames\":true},\"minify\":true,\"sourceMaps\":true,\"exclude\":[\"node_modules\",\".git\",\"dist\"],\"filename\":\"/Users/zhaoyi/Desktop/project/ashu-interface/tests/setupTests.ts\"}\n\nCaused by:\n    unknown field `laze`, expected one of `allowTopLevelThis`, `strict`, `strictMode`, `lazy`, `importInterop`, `exportInteropAnnotation`, `noInterop`, `ignoreDynamic`, `preserveImportMeta`, `resolveFully`, `outFileExtension` at line 1 column 690",
+      "testFilePath": "/Users/zhaoyi/Desktop/project/ashu-interface/tests/unit/index.spec.ts",
+      "testResults": []
+    }
+  ],
+  "wasInterrupted": false
+}
