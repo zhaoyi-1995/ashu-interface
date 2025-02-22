@@ -8,7 +8,8 @@
     "client:dev": "scripty",
     "client:prod": "scripty",
     "client:server": "scripty",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test:uidiff": "backstop test"
   },
   "config": {
     "scripty": {
@@ -51,6 +52,7 @@
     "node-notifier": "^10.0.1",
     "postcss": "^8.5.3",
     "postcss-loader": "^8.1.1",
+    "puppeteer": "^24.2.1",
     "style-loader": "^4.0.0",
     "swc-loader": "^0.2.6",
     "tailwindcss": "^4.0.7",

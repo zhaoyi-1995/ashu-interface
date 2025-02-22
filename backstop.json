@@ -3,8 +3,8 @@
   "viewports": [
     {
       "label": "phone",
-      "width": 320,
-      "height": 480
+      "width": 390,
+      "height": 844
     },
     {
       "label": "tablet",
@@ -18,7 +18,7 @@
     {
       "label": "BackstopJS Homepage",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "https://garris.github.io/BackstopJS/",
+      "url": "https://map.qq.com/m/",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -31,7 +31,7 @@
       "selectors": [],
       "selectorExpansion": true,
       "expect": 0,
-      "misMatchThreshold" : 0.1,
+      "misMatchThreshold": 0.1,
       "requireSameDimensions": true
     }
   ],
@@ -39,13 +39,18 @@
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "backstop_data/html_report",
-    "ci_report": "backstop_data/ci_report"
+    "html_report": "docs/backstop/html_report",
+    "ci_report": "docs/backstop/ci_report"
   },
-  "report": ["browser"],
+  "report": [
+    "browser"
+  ],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"]
+    "args": [
+      "--no-sandbox"
+    ],
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,
