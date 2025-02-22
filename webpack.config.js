@@ -66,6 +66,12 @@ const webpackBaseConfig = {
       }
     ]
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'runtime',
+    },
+    splitChunks: {},
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new Dotenv(),
