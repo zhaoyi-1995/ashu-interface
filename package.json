@@ -10,7 +10,8 @@
     "client:server": "scripty",
     "build": "webpack --mode production",
     "test:uidiff": "backstop test",
-    "test:unit": "jest --collectCoverage --reporters default jest-stare"
+    "test:unit": "jest --collectCoverage --reporters default jest-stare",
+    "test:e2e": "node ./tests/e2e/google.spec.js"
   },
   "jest-stare": {
     "coverageLink": "../jest-coverage/lcov-report/index.html",
@@ -38,7 +39,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
-    "scripty": "^2.1.1"
+    "scripty": "^2.1.1",
+    "selenium-webdriver": "^4.29.0"
   },
   "devDependencies": {
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
