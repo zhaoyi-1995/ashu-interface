@@ -4,8 +4,10 @@ const os = require('os');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge')
+const WorkboxConfig = require('./workbox.config.js')
 
-module.exports = {
+const ProdConfig = {
   output: {
     path: join(__dirname, '../dist'),
     publicPath: '/',
@@ -37,3 +39,5 @@ module.exports = {
     }),
   ],
 };
+
+module.exports = merge.default(ProdConfig, WorkboxConfig)
