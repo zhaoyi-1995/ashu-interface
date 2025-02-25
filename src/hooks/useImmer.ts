@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
-import { produce, Draft, freeze } from 'immer'
+import { produce, Draft, freeze } from 'immer';
+import _ from 'lodash';
 /**
  * 1. 函数签名编写，会将函数传入什么参数，返回什么数据 描述清楚
  * @param initialVal 可以是一个具体的数据, 也可以是一个 拉姆达函数返回值是一个 具体数据
@@ -34,11 +35,16 @@ export function useImmer<T>(initialVal: T) {
     val,
     useCallback((updater: T | DraftFunction<T>) => {
       if(typeof updater === 'function') {
-        updateVal(produce(updater as DraftFunction<T>))
+        updateVal((oldVal: T) => {
+          const newVal = produce<T>(updater as DraftFunction<T>)(oldVal)
+          return _.isEqual(oldVal, newVal) ? oldVal : newVal
+        })
       } else {
-        updateVal(freeze(updater))
+        const newVal = freeze(updater)
+        updateVal((oldVal: T) => {
+          return _.isEqual(oldVal, newVal) ? oldVal : newVal 
+        })
       }
     }, [])
   ]
-
 }
