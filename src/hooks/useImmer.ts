@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 import { produce, Draft, freeze } from 'immer';
 import _ from 'lodash';
 /**
@@ -9,11 +9,11 @@ import _ from 'lodash';
  */
 
 // 定义返回值的类型
-export type DraftFunction<S> = (draft: Draft<S>) => void
+export type DraftFunction<S> = (draft: Draft<S>) => void;
 
-export type Updater<S> = (arg: S | DraftFunction<S>) => void
+export type Updater<S> = (arg: S | DraftFunction<S>) => void;
 
-export type ImmerHook<S> = [S, Updater<S>]
+export type ImmerHook<S> = [S, Updater<S>];
 export function useImmer<S = unknown>(initialVal: S | (() => S)): ImmerHook<S>;
 
 /**
@@ -28,23 +28,23 @@ export function useImmer<T>(initialVal: T) {
    * 注意初始化的数据是需要被冻结的
    */
   const [val, updateVal] = useState(() => {
-    return freeze(typeof initialVal === 'function' ? initialVal() : initialVal, true)
-  })
+    return freeze(typeof initialVal === 'function' ? initialVal() : initialVal, true);
+  });
 
   return [
     val,
     useCallback((updater: T | DraftFunction<T>) => {
-      if(typeof updater === 'function') {
+      if (typeof updater === 'function') {
         updateVal((oldVal: T) => {
-          const newVal = produce<T>(updater as DraftFunction<T>)(oldVal)
-          return _.isEqual(oldVal, newVal) ? oldVal : newVal
-        })
+          const newVal = produce<T>(updater as DraftFunction<T>)(oldVal);
+          return _.isEqual(oldVal, newVal) ? oldVal : newVal;
+        });
       } else {
-        const newVal = freeze(updater)
+        const newVal = freeze(updater);
         updateVal((oldVal: T) => {
-          return _.isEqual(oldVal, newVal) ? oldVal : newVal 
-        })
+          return _.isEqual(oldVal, newVal) ? oldVal : newVal;
+        });
       }
-    }, [])
-  ]
+    }, []),
+  ];
 }

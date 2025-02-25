@@ -1,18 +1,17 @@
-import Header from "@/components/Header";
-import { memo } from "react";
+import Header from '@/components/Header';
+import { memo } from 'react';
 
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <main>
         <Outlet></Outlet>
       </main>
     </>
-   
-  )
-}
+  );
+};
 
-export default memo(MainLayout)
+export default memo(MainLayout);

@@ -6,7 +6,7 @@ import { atomWithImmer } from 'jotai-immer';
 interface User {
   name: string;
   age: number;
-  likes?: string[]
+  likes?: string[];
 }
 
 // 创建 Atom
@@ -14,33 +14,32 @@ const countAtom = atom(0); // 计数器 Atom，初始值为 0
 const userAtom = atomWithImmer<User>({ name: 'Alice', age: 25 }); // 用户信息 Atom
 
 const JotaiDemo = () => {
-  console.log('jotai更新了')
+  console.log('jotai更新了');
   // 使用 useAtom 读取和更新 Atom
   const [count, setCount] = useAtom(countAtom);
   const [user, setUser] = useAtom(userAtom);
 
   // 计数器操作
-  const increment = () => setCount((prev) => prev + 1);
-  const decrement = () => setCount((prev) => prev - 1);
-  const keepVal = () => setCount((prev) => prev)
+  const increment = () => setCount(prev => prev + 1);
+  const decrement = () => setCount(prev => prev - 1);
+  const keepVal = () => setCount(prev => prev);
 
   // 更新用户信息
   const updateUser = () => {
-    setUser((draf) => {
-      draf.name = '阿树'
+    setUser(draf => {
+      draf.name = '阿树';
     });
   };
   const updateUserByObj = () => {
-    setUser((draf) => {
-      draf.name = '阿树'
-      draf.likes = ['打篮球']
+    setUser(draf => {
+      draf.name = '阿树';
+      draf.likes = ['打篮球'];
     });
   };
 
   const updateUserByData = () => {
-    setUser({name: '阿树', age: 18});
+    setUser({ name: '阿树', age: 18 });
   };
-
 
   return (
     <div className="p-4">
@@ -100,4 +99,4 @@ const JotaiDemo = () => {
 };
 
 export default JotaiDemo;
-JotaiDemo.whyDidYouRender = true
+JotaiDemo.whyDidYouRender = true;

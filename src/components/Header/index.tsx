@@ -11,15 +11,19 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between p-4 bg-gray-800 text-white">
       {/* 左侧文字 Logo */}
-      <div className="text-2xl font-bold">
-        MyLogo
-      </div>
+      <div className="text-2xl font-bold">MyLogo</div>
 
       {/* 中间的路由链接 */}
       <div className="flex space-x-6">
-        <Link to="/" className="hover:text-gray-400">Home</Link>
-        <Link to="/dapp" className="hover:text-gray-400">DApp</Link>
-        <Link to="/bank" className="hover:text-gray-400">Bank</Link>
+        <Link to="/" className="hover:text-gray-400">
+          Home
+        </Link>
+        <Link to="/dapp" className="hover:text-gray-400">
+          DApp
+        </Link>
+        <Link to="/bank" className="hover:text-gray-400">
+          Bank
+        </Link>
       </div>
 
       {/* 右侧连接钱包按钮 */}

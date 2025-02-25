@@ -8,7 +8,7 @@ interface User {
 }
 
 const State = () => {
-  console.log('State更新了')
+  console.log('State更新了');
   // 使用类型初始化 useState
   const [user, setUser] = useState<User>({
     name: 'Alice',
@@ -27,9 +27,7 @@ const State = () => {
 
   // 错误的数据更新方式：数据没有发生改变，只是地址变了
   const handleWrongUpdate = () => {
-    setUser({ name: 'Alice',
-      age: 25,
-      city: 'New York',})
+    setUser({ name: 'Alice', age: 25, city: 'New York' });
   };
 
   return (
@@ -55,4 +53,4 @@ const State = () => {
 };
 
 export default State;
-State.whyDidYouRender = true
+State.whyDidYouRender = true;

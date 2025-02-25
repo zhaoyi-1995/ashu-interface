@@ -30,11 +30,8 @@ const InfoContractInterface = () => {
       //   InfoContractABI.abi,
       //   signer
       // );
-      // 直接使用工厂模式， 就不用再 asle 
-      const contractInstance = AShuInfo__factory.connect(
-        CONTRACT_ADDRESS,
-        signer
-      )
+      // 直接使用工厂模式， 就不用再 asle
+      const contractInstance = AShuInfo__factory.connect(CONTRACT_ADDRESS, signer);
       setContract(contractInstance);
 
       contractInstance.on('Instructor', (name: string, age: BigNumber) => {
@@ -98,9 +95,7 @@ const InfoContractInterface = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Info Contract Interface
-      </h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Info Contract Interface</h1>
 
       <div className="mb-6 p-4 bg-gray-50 rounded-lg">
         <p className="text-sm text-gray-600">Connected Account:</p>
@@ -112,14 +107,14 @@ const InfoContractInterface = () => {
           type="text"
           placeholder="Name"
           value={inputName}
-          onChange={(e) => setInputName(e.target.value)}
+          onChange={e => setInputName(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <input
           type="number"
           placeholder="Age"
           value={inputAge}
-          onChange={(e) => setInputAge(e.target.value)}
+          onChange={e => setInputAge(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <button

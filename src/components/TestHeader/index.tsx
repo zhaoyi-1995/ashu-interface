@@ -23,7 +23,7 @@ const TestHeader = () => {
 
         {/* 导航链接 */}
         <ul className="flex space-x-6">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <li key={item.path}>
               <Link
                 to={item.path}

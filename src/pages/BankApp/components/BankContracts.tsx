@@ -79,9 +79,9 @@ const BankContractInterface = () => {
     if (!contract) return;
     try {
       setLoading(true);
-      console.log(2222222)
+      console.log(2222222);
       const balance = await contract.getBalance();
-      console.log(balance, 1111111)
+      console.log(balance, 1111111);
       setContractBalance(ethers.utils.formatEther(balance));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error occurred');
@@ -93,9 +93,7 @@ const BankContractInterface = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Bank Contract Interface
-      </h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Bank Contract Interface</h1>
 
       <div className="mb-6 p-4 bg-gray-50 rounded-lg">
         <p className="text-sm text-gray-600">Connected Account:</p>
@@ -107,7 +105,7 @@ const BankContractInterface = () => {
           type="text"
           placeholder="Deposit Amount (ETH)"
           value={inputDeposit}
-          onChange={(e) => setInputDeposit(e.target.value)}
+          onChange={e => setInputDeposit(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <button
@@ -124,7 +122,7 @@ const BankContractInterface = () => {
           type="text"
           placeholder="Withdraw Amount (ETH)"
           value={inputWithdraw}
-          onChange={(e) => setInputWithdraw(e.target.value)}
+          onChange={e => setInputWithdraw(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <button
@@ -137,7 +135,9 @@ const BankContractInterface = () => {
       </div>
 
       <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-        <p className="text-lg font-semibold text-gray-800">Contract Balance: {contractBalance} ETH</p>
+        <p className="text-lg font-semibold text-gray-800">
+          Contract Balance: {contractBalance} ETH
+        </p>
       </div>
 
       {error && (

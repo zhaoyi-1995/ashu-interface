@@ -8,17 +8,13 @@ import BankApp from '@/pages/BankApp';
 import DApp from '@/pages/DApp';
 import Home from '@pages/Home';
 
-const Immer = lazy(() => import('@pages/Immer'))
-const State = lazy(() => import('@pages/State'))
-const Jotai = lazy(() => import('@pages/Jotai'))
+const Immer = lazy(() => import('@pages/Immer'));
+const State = lazy(() => import('@pages/State'));
+const Jotai = lazy(() => import('@pages/Jotai'));
 
-
-const Layout = ({children = <MainLayout />}: { children?: ReactNode }) => (
-  <Suspense fallback={<Loading />}>
-    { children }
-  </Suspense>
-)
-
+const Layout = ({ children = <MainLayout /> }: { children?: ReactNode }) => (
+  <Suspense fallback={<Loading />}>{children}</Suspense>
+);
 
 const Routes: RouteObject[] = [];
 
@@ -31,20 +27,23 @@ const mainRoutes: RouteObject = {
     { path: 'dapp', element: <DApp /> },
     { path: 'bank', element: <BankApp /> },
     { path: '404', element: <PageNotFoundView /> },
-  ]
-}
+  ],
+};
 
 const testStateRoutes: RouteObject = {
   path: 'test',
-  element: <Layout><TestLayout/></Layout>,
+  element: (
+    <Layout>
+      <TestLayout />
+    </Layout>
+  ),
   children: [
     { path: 'immer', element: <Immer /> },
     { path: 'state', element: <State /> },
     { path: 'jotai', element: <Jotai /> },
-  ]
-}
+  ],
+};
 
+Routes.push(mainRoutes, testStateRoutes);
 
-Routes.push(mainRoutes, testStateRoutes)
-
-export default Routes
+export default Routes;

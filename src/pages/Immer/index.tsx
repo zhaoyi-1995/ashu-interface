@@ -8,7 +8,7 @@ interface User {
 }
 
 const Immer = () => {
-  console.log('immer更新了')
+  console.log('immer更新了');
   // 使用类型初始化 useState
   const [user, setUser] = useImmer<User>({
     name: 'Alice',
@@ -32,17 +32,17 @@ const Immer = () => {
   };
 
   const handleUpdateByMethod = () => {
-    setUser((userInfo) => {
-      userInfo.age = 100
-      userInfo.city = ['2', '3', '4']
-    })
+    setUser(userInfo => {
+      userInfo.age = 100;
+      userInfo.city = ['2', '3', '4'];
+    });
   };
 
   const handleUpdateByMethodMore = () => {
-    setUser((userInfo) => {
-      userInfo.age++
-      userInfo.city = ['2', '3', '4']
-    })
+    setUser(userInfo => {
+      userInfo.age++;
+      userInfo.city = ['2', '3', '4'];
+    });
   };
 
   return (
@@ -80,4 +80,4 @@ const Immer = () => {
 };
 
 export default Immer;
-Immer.whyDidYouRender = true
+Immer.whyDidYouRender = true;
