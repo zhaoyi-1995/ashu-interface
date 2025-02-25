@@ -32,6 +32,9 @@ importers:
       jotai:
         specifier: ^2.12.1
         version: 2.12.1(@types/react@19.0.10)(react@19.0.0)
+      jotai-immer:
+        specifier: ^0.4.1
+        version: 0.4.1(immer@10.1.1)(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))
       jquery:
         specifier: ^3.7.1
         version: 3.7.1
@@ -2626,6 +2629,12 @@ packages:
   jiti@2.4.2:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
+
+  jotai-immer@0.4.1:
+    resolution: {integrity: sha512-nQTt1HBKie/5OJDck1qLpV1PeBA6bjJLAczEYAx70PD8R4Mbu7gtexfBUCzJh6W6ecsOfwHksAYAesVth6SN9A==}
+    peerDependencies:
+      immer: '>=9.0.0'
+      jotai: '>=2.0.0'
 
   jotai@2.12.1:
     resolution: {integrity: sha512-VUW0nMPYIru5g89tdxwr9ftiVdc/nGV9jvHISN8Ucx+m1vI9dBeHemfqYzEuw5XSkmYjD/MEyApN9k6yrATsZQ==}
@@ -7508,6 +7517,11 @@ snapshots:
   jiti@1.21.7: {}
 
   jiti@2.4.2: {}
+
+  jotai-immer@0.4.1(immer@10.1.1)(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0)):
+    dependencies:
+      immer: 10.1.1
+      jotai: 2.12.1(@types/react@19.0.10)(react@19.0.0)
 
   jotai@2.12.1(@types/react@19.0.10)(react@19.0.0):
     optionalDependencies:
