@@ -30,7 +30,7 @@ importers:
         specifier: ^10.1.1
         version: 10.1.1
       jotai:
-        specifier: ^2.12.0
+        specifier: ^2.12.1
         version: 2.12.1(@types/react@19.0.10)(react@19.0.0)
       jquery:
         specifier: ^3.7.1
