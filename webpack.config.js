@@ -72,6 +72,7 @@ const webpackBaseConfig = {
     },
     splitChunks: {},
   },
+
   plugins: [
     new CleanWebpackPlugin(),
     new Dotenv(),

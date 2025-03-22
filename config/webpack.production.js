@@ -30,9 +30,15 @@ const ProdConfig = {
       }),
     ],
   },
+  // CDN 引入 react 相关资源
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom/client': 'ReactDOM',
+  //   'react-router-dom': 'ReactRouterDOM'
+  // },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Yideng',
+      title: 'Ashu',
       filename: 'index.html',
       template: resolve(__dirname, '../src/index_prod.html'),
       favicon: './public/favicon.ico',
