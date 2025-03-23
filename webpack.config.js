@@ -70,7 +70,53 @@ const webpackBaseConfig = {
     runtimeChunk: {
       name: 'runtime',
     },
-    splitChunks: {},
+    splitChunks: {
+      // 公用包提出来
+      chunks: 'all',
+      cacheGroups: {
+        commons: {
+          chunks: 'all',
+          name: 'chunk-common',
+          minChunks: 2,
+          maxInitialRequests: 5,
+          priority: 1,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+        vendors: {
+          name: 'chunk-vendors',
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          priority: 2,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        uiComponent: {
+          name: 'chunk-components',
+          test: /([\\/]node_modules[\\/]@mui[\\/].+\w)|(src[\\/]components[\\/]common)|([\\/]node_modules[\\/]@ashu[\\/]components)/,
+          chunks: 'all',
+          priority: 4,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        ethersSDK: {
+          name: 'chunk-web3-sdk',
+          test: /[\\/]node_modules[\\/](ethers*\w|@ethersproject*\w|@web3-react*\w)/,
+          chunks: 'all',
+          priority: 5,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        reactLibs: {
+          name: 'chunk-react-libs',
+          test: /[\\/]node_modules[\\/](react|react.+\w)/,
+          chunks: 'all',
+          priority: 6,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+      }
+    },
   },
 
   plugins: [
