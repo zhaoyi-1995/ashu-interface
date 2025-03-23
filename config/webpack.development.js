@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const notifier = require('node-notifier')
 const logo = join(__dirname, 'icon.png')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const port = 3003
+const InlineRuntimePlugin = require('../plugins/InlineRuntimePlugin');
+const port = 3004
 module.exports = {
   devServer: {
     historyApiFallback: true,
@@ -29,10 +30,10 @@ module.exports = {
       filename: 'index.html', // 输出的 HTML 文件名称
       template: resolve(__dirname, '../src/index_dev.html') // 使用的模板文件
     }),
-
+    new InlineRuntimePlugin(), // 使用自定义插件
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['Your application is running here http://localhost:3003'], // 显示应用运行地址
+        messages: ['Your application is running here http://localhost:3004'], // 显示应用运行地址
         notes: ['构建信息,及时关注右上角'] // 附加的提示信息
       },
       onErrors: function (severity, errors) {
