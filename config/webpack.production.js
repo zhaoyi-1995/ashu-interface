@@ -12,7 +12,7 @@ const ProdConfig = {
     path: join(__dirname, '../dist'),
     publicPath: '/',
     filename: 'scripts/[name].[contenthash:5].bundule.js',
-    assetModuleFilename: 'images/[name].[contenthash:5][ext]',
+    assetModuleFilename: 'images/[name].[contenthash:5].[ext]',
   },
   performance: {
     maxAssetSize: 250000, // 最大资源大小250KB

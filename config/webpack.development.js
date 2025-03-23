@@ -17,8 +17,8 @@ module.exports = {
 
   output: {
     publicPath: '/',
-    filename: 'scripts/[name].bundle.js',
-    assetModuleFilename: 'images/[name].[ext]',
+    filename: 'scripts/[name].[contenthash:8].bundle.js',
+    assetModuleFilename: 'images/[name].[contenthash:8].[ext]',
   },
 
   stats: 'errors-only',
