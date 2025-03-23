@@ -21,6 +21,72 @@
 </head>
 
 <body>
+  <script>
+    const manifest = {
+      "main.css": "/styles/main.css",
+      "main.js": "/scripts/main.f70e0318.bundle.js",
+      "runtime.js": "/scripts/runtime.f85af822.bundle.js",
+      "scripts/src_pages_Immer_index_tsx.8148f4d2.bundle.js": "/scripts/src_pages_Immer_index_tsx.8148f4d2.bundle.js",
+      "scripts/src_pages_State_index_tsx.b6c9c0fc.bundle.js": "/scripts/src_pages_State_index_tsx.b6c9c0fc.bundle.js",
+      "scripts/src_pages_Jotai_index_tsx.65edeb11.bundle.js": "/scripts/src_pages_Jotai_index_tsx.65edeb11.bundle.js",
+      "chunk-react-libs.js": "/scripts/chunk-react-libs.64fbe84d.bundle.js",
+      "chunk-web3-sdk.js": "/scripts/chunk-web3-sdk.f3239136.bundle.js",
+      "chunk-components.js": "/scripts/chunk-components.ad9e8ece.bundle.js",
+      "chunk-vendors.js": "/scripts/chunk-vendors.726c3020.bundle.js",
+      "scripts/vendors-node_modules_pnpm_jotai-immer_0_4_1_immer_10_1_1_jotai_2_12_1__types_react_19_0_10_re-67ad66.3192fdf7.bundle.js": "/scripts/vendors-node_modules_pnpm_jotai-immer_0_4_1_immer_10_1_1_jotai_2_12_1__types_react_19_0_10_re-67ad66.3192fdf7.bundle.js",
+      "index.html": "/index.html"
+    };
+
+    // 定义需要检查的固定键
+    const fixedKeys = [
+      'chunk-react-libs.js',
+      'chunk-web3-sdk.js',
+      'chunk-vendors.js'
+    ];
+
+    const filesToCache = fixedKeys.map(key => manifest[key]);
+
+    // 加载脚本的函数
+    function loadScript(file) {
+      const cacheKey = `script_${file}`; // 使用文件路径作为缓存键
+      const cachedScript = localStorage.getItem(cacheKey);
+
+      if (cachedScript) {
+        // 如果有缓存，直接执行
+        console.log(`Loading ${file} from localStorage`);
+        const script = document.createElement('script');
+        script.textContent = cachedScript;
+        document.body.appendChild(script);
+      } else {
+        // 如果没有缓存，从服务器下载
+        console.log(`Fetching ${file} from server`);
+        fetch(file)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+            }
+            return response.text();
+          })
+          .then(scriptContent => {
+            // 存入 localStorage
+            localStorage.setItem(cacheKey, scriptContent);
+            // 执行脚本
+            const script = document.createElement('script');
+            script.textContent = scriptContent;
+            document.body.appendChild(script);
+          })
+          .catch(error => {
+            console.error(`Failed to load script: ${file}`, error);
+          });
+      }
+    }
+
+    // 在页面加载时执行
+    window.addEventListener('load', () => {
+      filesToCache.forEach(file => loadScript(file));
+    });
+
+  </script>
   <div id="app"></div>
 </body>
 
