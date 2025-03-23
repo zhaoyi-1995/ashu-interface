@@ -189,6 +189,9 @@ importers:
       webpack-dev-server:
         specifier: ^5.2.0
         version: 5.2.0(webpack-cli@6.0.1)(webpack@5.98.0)
+      webpack-manifest-plugin:
+        specifier: ^5.0.1
+        version: 5.0.1(webpack@5.98.0)
       webpack-merge:
         specifier: ^6.0.1
         version: 6.0.1
@@ -5674,12 +5677,22 @@ packages:
       webpack-cli:
         optional: true
 
+  webpack-manifest-plugin@5.0.1:
+    resolution: {integrity: sha512-xTlX7dC3hrASixA2inuWFMz6qHsNi6MT3Uiqw621sJjRTShtpMjbDYhPPZBwWUKdIYKIjSq9em6+uzWayf38aQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      webpack: ^5.75.0
+
   webpack-merge@6.0.1:
     resolution: {integrity: sha512-hXXvrjtx2PLYx4qruKl+kyRSLc52V+cCvMxRjmKwoA+CBbbF5GfIBtR6kCvl0fYGqTUPKB+1ktVmTHqMOzgCBg==}
     engines: {node: '>=18.0.0'}
 
   webpack-sources@1.4.3:
     resolution: {integrity: sha512-lgTS3Xhv1lCOKo7SA5TjKXMjpSM4sBjNV5+q2bqesbSPs5FjGmU6jjtBSkX9b4qW87vDIsCIlUPOEhbZrMdjeQ==}
+
+  webpack-sources@2.3.1:
+    resolution: {integrity: sha512-y9EI9AO42JjEcrTJFOYmVywVZdKVUfOvDUPsJea5GIr1JOEGFVqwlY2K098fFoIjOkDzHn2AjRvM8dsBZu+gCA==}
+    engines: {node: '>=10.13.0'}
 
   webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
@@ -12470,6 +12483,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  webpack-manifest-plugin@5.0.1(webpack@5.98.0):
+    dependencies:
+      tapable: 2.2.1
+      webpack: 5.98.0(@swc/core@1.10.18(@swc/helpers@0.5.15))(webpack-cli@6.0.1)
+      webpack-sources: 2.3.1
+
   webpack-merge@6.0.1:
     dependencies:
       clone-deep: 4.0.1
@@ -12477,6 +12496,11 @@ snapshots:
       wildcard: 2.0.1
 
   webpack-sources@1.4.3:
+    dependencies:
+      source-list-map: 2.0.1
+      source-map: 0.6.1
+
+  webpack-sources@2.3.1:
     dependencies:
       source-list-map: 2.0.1
       source-map: 0.6.1

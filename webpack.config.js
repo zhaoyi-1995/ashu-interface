@@ -10,6 +10,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 // const WebpackBar = require('webpackbar');
 const { ThemedProgressPlugin } = require('themed-progress-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
 
 const _mode = argv.mode || 'development'
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
@@ -132,6 +134,9 @@ const webpackBaseConfig = {
       ignoreOrder: false,
     }),
     new ThemedProgressPlugin(),
+    new WebpackManifestPlugin({
+      fileName: 'manifest.json', // 输出文件名，默认为 manifest.json
+    })
   ]
 }
 module.exports = merge.default(webpackBaseConfig, _mergeConfig)
