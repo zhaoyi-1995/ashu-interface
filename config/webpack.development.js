@@ -6,6 +6,7 @@ const logo = join(__dirname, 'icon.png')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const InlineRuntimePlugin = require('../plugins/InlineRuntimePlugin');
 const InlineManifestPlugin = require('../plugins/InlineManifestPlugin'); // 新增导入
+const RemoveChunkScriptsPlugin = require('../plugins/RemoveChunkScriptsPlugin')
 const port = 3004
 module.exports = {
   devServer: {
@@ -31,6 +32,7 @@ module.exports = {
       filename: 'index.html', // 输出的 HTML 文件名称
       template: resolve(__dirname, '../src/index_dev.html') // 使用的模板文件
     }),
+    new RemoveChunkScriptsPlugin(),
     new InlineRuntimePlugin(), // 使用自定义插件
     new InlineManifestPlugin(),
     new FriendlyErrorsWebpackPlugin({
