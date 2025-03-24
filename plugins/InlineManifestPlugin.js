@@ -1,36 +1,34 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const fs = require('fs');
-const path = require('path');
+const { getCompilerHooks } = require('webpack-manifest-plugin');
 
 class InlineManifestPlugin {
   apply(compiler) {
+    const { beforeEmit: manifestBeforeEmit } = getCompilerHooks(compiler);
+    let manifestData = {};
+    let manifestPromiseResolve;
+
+    const manifestPromise = new Promise((resolve) => {
+      manifestPromiseResolve = resolve;
+    });
+
+    manifestBeforeEmit.tap('InlineManifestPlugin', (manifest) => {
+      manifestData = manifest;
+      console.log('InlineManifestPlugin: Captured manifest data:', JSON.stringify(manifestData));
+      manifestPromiseResolve(manifestData);
+      return manifest;
+    });
+
     compiler.hooks.compilation.tap('InlineManifestPlugin', (compilation) => {
       const hooks = HtmlWebpackPlugin.getHooks(compilation);
 
-      hooks.beforeEmit.tapAsync('InlineManifestPlugin', (data, cb) => {
-        // 获取 dist 目录路径
-        const outputPath = compilation.options.output.path; // 例如 dist
-        const manifestPath = path.resolve(outputPath, 'manifest.json');
-        let manifestContent = '{}';
+      hooks.beforeEmit.tapPromise('InlineManifestPlugin', async (data) => {
+        const resolvedManifest = await manifestPromise;
 
-        // 从磁盘读取 manifest.json
-        try {
-          if (fs.existsSync(manifestPath)) {
-            manifestContent = fs.readFileSync(manifestPath, 'utf-8');
-            console.log('InlineManifestPlugin: Successfully read manifest.json from disk:', manifestContent);
-          } else {
-            console.warn('InlineManifestPlugin: manifest.json not found at', manifestPath);
-          }
-        } catch (error) {
-          console.error('InlineManifestPlugin: Error reading manifest.json:', error);
-        }
-
-        // 检查模板中是否有占位符
         if (!data.html.includes('const manifest = {}')) {
           console.warn('InlineManifestPlugin: "const manifest = {}" not found in template');
         }
 
-        // 替换 manifest 数据到 HTML
+        const manifestContent = JSON.stringify(resolvedManifest);
         const replacedHtml = data.html.replace(
           /const manifest = \{\}/,
           `const manifest = ${manifestContent}`
@@ -43,7 +41,7 @@ class InlineManifestPlugin {
         }
 
         data.html = replacedHtml;
-        cb(null, data);
+        return data;
       });
     });
   }

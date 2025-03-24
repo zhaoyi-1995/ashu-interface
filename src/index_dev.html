@@ -18,75 +18,11 @@
     window.ReactDOM = ReactDOM;
     window.ReactRouterDOM = ReactRouterDOM;
   </script> -->
-  <script>
-    const manifest = {};
-    // 定义需要检查的固定键
-    const fixedKeys = [
-      'chunk-react-libs.js',
-      'chunk-web3-sdk.js',
-    ];
 
-    const filesToCache = fixedKeys.map(key => manifest[key]);
-
-    // 加载脚本的函数
-    function loadScript(file) {
-      const cacheKey = `script_${file}`; // 使用文件路径作为缓存键
-      const cachedScript = localStorage.getItem(cacheKey);
-
-      if (cachedScript) {
-        // 如果有缓存，直接执行
-        console.log(`Loading ${file} from localStorage`);
-        const script = document.createElement('script');
-        script.textContent = cachedScript;
-        document.body.appendChild(script);
-      } else {
-        // 如果没有缓存，从服务器下载
-        console.log(`Fetching ${file} from server`);
-        fetch(file)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
-            }
-            return response.text();
-          })
-          .then(scriptContent => {
-            // 存入 localStorage
-            localStorage.setItem(cacheKey, scriptContent);
-            // 执行脚本
-            const script = document.createElement('script');
-            script.textContent = scriptContent;
-            document.body.appendChild(script);
-          })
-          .catch(error => {
-            console.error(`Failed to load script: ${file}`, error);
-          });
-      }
-    }
-
-    // 在页面加载时执行
-    window.addEventListener('load', () => {
-      filesToCache.forEach(file => loadScript(file));
-    });
-
-  </script>
 </head>
 
 <body>
   <div id="app"></div>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/sw.js')
-          .then((registration) => {
-            console.log('Service Worker 注册成功:', registration);
-          })
-          .catch((error) => {
-            console.error('Service Worker 注册失败:', error);
-          });
-      });
-    }
-  </script>
 </body>
 
 </html>

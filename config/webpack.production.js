@@ -7,6 +7,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge')
 const WorkboxConfig = require('./workbox.config.js')
 
+// 分包处理
+// const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const InlineRuntimePlugin = require('../plugins/InlineRuntimePlugin');
+const InlineManifestPlugin = require('../plugins/InlineManifestPlugin'); // 新增导入
+const RemoveChunkScriptsPlugin = require('../plugins/RemoveChunkScriptsPlugin')
+
+
 const ProdConfig = {
   output: {
     path: join(__dirname, '../dist'),
@@ -43,6 +50,12 @@ const ProdConfig = {
       template: resolve(__dirname, '../src/index_prod.html'),
       favicon: './public/favicon.ico',
     }),
+    // new WebpackManifestPlugin({
+    //   fileName: 'manifest.json', // 输出文件名，默认为 manifest.json
+    // }),
+    new RemoveChunkScriptsPlugin(),
+    new InlineRuntimePlugin(),
+    new InlineManifestPlugin(),
   ],
 };
 

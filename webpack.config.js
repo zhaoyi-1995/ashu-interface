@@ -11,6 +11,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const WebpackBar = require('webpackbar');
 const { ThemedProgressPlugin } = require('themed-progress-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { Compilation } = require('webpack');
 
 
 const _mode = argv.mode || 'development'
@@ -136,7 +137,8 @@ const webpackBaseConfig = {
     new ThemedProgressPlugin(),
     new WebpackManifestPlugin({
       fileName: 'manifest.json', // 输出文件名，默认为 manifest.json
-      writeToFileEmit: true
+      writeToFileEmit: true,
+      assetHookStage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL, // 设置为 -100
     })
   ]
 }

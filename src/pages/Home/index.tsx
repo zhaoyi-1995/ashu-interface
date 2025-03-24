@@ -20,7 +20,7 @@ const Home = () => {
   return <>
     <h2>书籍列表</h2>
     {bookList.map(item => <div>{item.name} ---- {item.auth}</div> )}
-    <p>测试Etag缓存得</p>
+    <p>22222222</p>
   </>;
 };
 
