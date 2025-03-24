@@ -9,8 +9,12 @@ module.exports = {
       skipWaiting: true, // 跳过等待阶段，让新 Service Worker 立即激活，替换旧版本
       cleanupOutdatedCaches: true, // 自动清理旧的、未使用的缓存，确保缓存一致性
 
+      // 只缓存主包模式
+      include: [/\/scripts\/main\..*\.bundle\.js/], // 
+      exclude: [/\.map$/, /manifest\.json$/, /\/scripts\/chunk-.*\.bundle\.js$/], // 排除分包
+
       // 预缓存设置
-      exclude: [/\.map$/, /manifest\.json$/], // 排除不需要预缓存的文件，例如 source map 和 manifest 文件
+      // exclude: [/\.map$/, /manifest\.json$/], // 排除不需要预缓存的文件，例如 source map 和 manifest 文件
       maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 设置预缓存文件的最大大小（这里是 5MB），防止缓存过大文件
 
       // 运行时缓存策略
@@ -38,12 +42,14 @@ module.exports = {
           },
         },
         {
-          urlPattern: /\.(?:js)$/, // 匹配 JavaScript 文件的正则表达式
+          urlPattern: /\/scripts\/main\..*\.bundle\.js/, // 只缓存主包
+          // urlPattern: /\.(?:js)$/, // 所有缓存开启 匹配 JavaScript 文件的正则表达式
           handler: 'CacheFirst', // 使用“缓存优先”策略，适合内容稳定的 JS 文件
           options: {
             cacheName: 'scripts', // 为 JS 文件缓存设置独立的缓存名称
             expiration: {
-              maxEntries: 30, // 限制缓存中最多存储 30 个 JS 文件
+              maxEntries: 1, // 只缓存一个文件
+              // maxEntries: 30, // 限制缓存中最多存储 30 个 JS 文件
               maxAgeSeconds: 7 * 24 * 60 * 60, // 设置缓存有效期为 7 天
             },
           },

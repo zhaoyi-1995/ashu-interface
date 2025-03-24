@@ -7,9 +7,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const InlineRuntimePlugin = require('../plugins/InlineRuntimePlugin');
 const InlineManifestPlugin = require('../plugins/InlineManifestPlugin'); // 新增导入
 const RemoveChunkScriptsPlugin = require('../plugins/RemoveChunkScriptsPlugin')
+const merge = require('webpack-merge')
+const WorkboxConfig = require('./workbox.config.js')
 
 const port = 3004
-module.exports = {
+const devConfig = {
   devServer: {
     historyApiFallback: true,
     static: {
@@ -90,3 +92,5 @@ module.exports = {
     // new BundleAnalyzerPlugin()
   ]
 }
+
+module.exports = merge.default(devConfig, WorkboxConfig)
