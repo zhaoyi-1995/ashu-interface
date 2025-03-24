@@ -12,7 +12,7 @@ class InlineRuntimePlugin {
           const runtimeFile = Array.from(runtimeChunk.files)[0]; // 获取 runtime 文件名，例如 "runtime.f85af822.bundle.js"
           const runtimeCode = compilation.assets[runtimeFile].source(); // 获取 runtime 代码内容
 
-          // 移除原始的 runtime <script> 标签（同时检查 headTags 和 bodyTags）
+          // 移除原始的 runtime <script> 标签（检查 headTags 和 bodyTags）
           data.headTags = data.headTags.filter(
             (tag) => !(tag.tagName === 'script' && tag.attributes.src === `/${runtimeFile}`)
           );
@@ -20,12 +20,15 @@ class InlineRuntimePlugin {
             (tag) => !(tag.tagName === 'script' && tag.attributes.src === `/${runtimeFile}`)
           );
 
-          // 添加内联的 <script> 标签到 <head>
-          data.headTags.push({
+          // 创建内联的 <script> 标签
+          const inlineRuntimeScript = {
             tagName: 'script',
             voidTag: false,
             innerHTML: runtimeCode,
-          });
+          };
+
+          // 将内联脚本插入到 headTags 的第一个位置
+          data.headTags.unshift(inlineRuntimeScript); // 使用 unshift 代替 push
 
           // 删除独立的 runtime 文件（避免多余输出）
           delete compilation.assets[runtimeFile];

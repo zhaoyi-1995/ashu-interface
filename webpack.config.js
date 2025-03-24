@@ -136,6 +136,7 @@ const webpackBaseConfig = {
     new ThemedProgressPlugin(),
     new WebpackManifestPlugin({
       fileName: 'manifest.json', // 输出文件名，默认为 manifest.json
+      writeToFileEmit: true
     })
   ]
 }
