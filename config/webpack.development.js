@@ -7,6 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const InlineRuntimePlugin = require('../plugins/InlineRuntimePlugin');
 const InlineManifestPlugin = require('../plugins/InlineManifestPlugin'); // 新增导入
 const RemoveChunkScriptsPlugin = require('../plugins/RemoveChunkScriptsPlugin')
+
 const port = 3004
 module.exports = {
   devServer: {
@@ -15,7 +16,39 @@ module.exports = {
       directory: join(__dirname, '../dist')
     },
     hot: true,
-    port
+    port,
+    devMiddleware: {
+      writeToDisk: true, // 移动到 devMiddleware 中
+    },
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      middlewares.unshift((req, res, next) => {
+        if (req.url.endsWith('.js')) {
+          const nodeCrypto = require('crypto'); // 确保正确导入
+          const etag = nodeCrypto.createHash('md5').update(req.url).digest('hex');
+          const lastModified = new Date().toUTCString();
+          res.setHeader('Cache-Control', 'no-cache');
+          res.setHeader('ETag', etag);
+          res.setHeader('Last-Modified', lastModified);
+          const ifNoneMatch = req.headers['if-none-match'];
+          const ifModifiedSince = req.headers['if-modified-since'];
+          if (ifNoneMatch && ifNoneMatch === etag) {
+            res.status(304).end();
+            return; // 直接返回，不调用 next()
+          }
+          if (ifModifiedSince && new Date(ifModifiedSince) >= new Date(lastModified)) {
+            res.status(304).end();
+            return; // 直接返回，不调用 next()
+          }
+        }
+        next(); // 仅在未发送 304 时调用 next()
+      });
+
+      return middlewares;
+    },
   },
 
   output: {
